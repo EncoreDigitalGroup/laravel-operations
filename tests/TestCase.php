@@ -1,15 +1,16 @@
 <?php
 
-namespace EncoreDigitalGroup\LaravelOperations\Tests\Feature;
+namespace EncoreDigitalGroup\LaravelOperations\Tests;
 
 use EncoreDigitalGroup\LaravelOperations\Providers\LaravelOperationsServiceProvider;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Queue;
-use Orchestra\Testbench\TestCase;
+//use PHPUnit\Framework\TestCase as BaseTestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
-abstract class OneTimeOperationCase extends TestCase
+abstract class TestCase extends BaseTestCase
 {
     protected const TEST_OPERATION_NAME = 'xxxx_xx_xx_xxxxxx_foo_bar';
 
@@ -30,7 +31,7 @@ abstract class OneTimeOperationCase extends TestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-        DB::rollback();
+        //        DB::rollback();
     }
 
     protected function getPackageProviders($app): array
