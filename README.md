@@ -1,6 +1,6 @@
-![One-Time Operations for Laravel](https://user-images.githubusercontent.com/65356688/225704995-ec7f54fb-a5b8-4d73-898f-2ebeed9ee733.jpg)
+![One-Time Operations for Laravel](/img/project_header.png)
 
-# One-Time Operations for Laravel
+# Laravel Operations
 
 Run operations once after deployment - just like you do it with migrations!
 
@@ -66,12 +66,12 @@ php artisan operations:process <operation_name>  // re-run one specific operatio
 ### Show operations
 
 ```shell
-php artisan operations:show            // show all operations 
-php artisan operations:show pending    // show pending operations 
-php artisan operations:show processed  // show processed operations 
-php artisan operations:show disposed   // show disposed operations 
+php artisan operations:show            // show all operations
+php artisan operations:show pending    // show pending operations
+php artisan operations:show processed  // show processed operations
+php artisan operations:show disposed   // show disposed operations
 
-php artisan operations:show pending processed disposed  // use multiple filters 
+php artisan operations:show pending processed disposed  // use multiple filters
 ```
 
 ## Tutorials
@@ -93,7 +93,7 @@ You can make it part of your deployment script like this:
 
 By default, the following elements will be created in your project:
 
-- the table `sys_operations` in your database
+- the table `operations` in your database
 - the directory `operations` in your project root directory
 
 If you want to use a different settings just publish and edit the config file:
@@ -109,7 +109,7 @@ This will create the file `config/operations.php` with the following content.
 
 return [
     'directory' => 'operations',
-    'table' => 'sys_operations',
+    'table' => 'operations',
 ];
 ```
 
@@ -117,9 +117,9 @@ Make changes as you like.
 
 ### Create One-Time Operation files
 
-![One-Time Operations for Laravel - Create One-Time Operation files](https://user-images.githubusercontent.com/65356688/224433928-721b1261-b7ad-40c6-a512-d0f5b5fa0cbf.png)
+![One-Time Operations for Laravel - Create One-Time Operation files](/img/operations_make.png)
 
-![One-Time Operations for Laravel - Create One-Time Operation files](https://user-images.githubusercontent.com/65356688/224433323-96b23e84-e22e-4333-8749-ae61cc866cd1.png)
+![One-Time Operations for Laravel - Create One-Time Operation files](/img/operations_make_filesystem.png)
 
 To create a new operation file execute the following command:
 
@@ -141,12 +141,12 @@ return new class extends LaravelOperation
      * Determine if the operation is being processed asynchronously.
      */
     protected bool $async = true;
-    
+
     /**
      * The queue that the job will be dispatched to.
      */
     protected string $queue = 'default';
-    
+
     /**
      * A tag name, that this operation can be filtered by.
      */
@@ -201,7 +201,7 @@ file.
 
 ### Processing the operations
 
-![One-Time Operations for Laravel - Processing the operations](https://user-images.githubusercontent.com/65356688/224434129-43082402-6077-4043-8e97-c44786e60a59.png)
+![One-Time Operations for Laravel - Processing the operations](/img/operations_process.png)
 
 Use the following call to process all new operation files.
 
@@ -211,7 +211,7 @@ php artisan operations:process
 
 Your code will be executed, and you will find all the processed operations in the `operations` table:
 
-| id | name                                | dispatched | processed_at        | 
+| id | name                                | dispatched | processed_at        |
 |----|-------------------------------------|------------|---------------------|
 | 1  | XXXX_XX_XX_XXXXXX_awesome_operation | async      | 2015-10-21 07:28:00 |
 
@@ -227,7 +227,7 @@ synchronously/asynchronously execution and ignore the attribute:
 
 ```shell
 php artisan operations:process --async  // force dispatch()
-php artisan operations:process --sync   // force dispatchSync()  
+php artisan operations:process --sync   // force dispatchSync()
 ```
 
 **Hint!** If `operation:process` is part of your deployment process, it is **not recommended** to process the operations
@@ -240,7 +240,7 @@ You can provide the `--queue` option in the artisan call. The given queue will b
 the `$queue` attribute in the class.
 
 ```shell
-php artisan operations:process --queue=redis  // force redis queue 
+php artisan operations:process --queue=redis  // force redis queue
 ```
 
 ### Run commands isolated on Multi-Server Architecture
@@ -249,7 +249,7 @@ If you work with a Multi-Server Architecture you can use `--isolated` option to 
 the command ([Laravel Isolatable Commands](https://laravel.com/docs/10.x/artisan#isolatable-commands)).
 
 ```shell
-php artisan operations:process --isolated 
+php artisan operations:process --isolated
 ```
 
 ### Run only operations with a given tag
@@ -273,7 +273,7 @@ php artisan operations:process --tag=awesome  // run only operations with "aweso
 This is quite usefull if, for example, you want to process some of your operations before and some after the migrations:
 
 ```text
- - php artisan operations:process --tag=before-migrations 
+ - php artisan operations:process --tag=before-migrations
  - php artisan migrate
  - php artisan operations:process
 ```
@@ -281,14 +281,14 @@ This is quite usefull if, for example, you want to process some of your operatio
 You can also provide multiple tags:
 
 ```shell
-php artisan operations:process --tag=awesome --tag=foobar // run only operations with "awesome" or "foobar" tag 
+php artisan operations:process --tag=awesome --tag=foobar // run only operations with "awesome" or "foobar" tag
 ```
 
 *Hint!* `operations:process` (without tags) still processes *all* operations, even if they have a tag.
 
 ### Re-run an operation
 
-![One-Time Operations for Laravel - Re-run an operation manually](https://user-images.githubusercontent.com/65356688/224440344-3d095730-12c3-4a2c-b4c3-42a8b6d60767.png)
+![One-Time Operations for Laravel - Re-run an operation manually](/img/operations_process_manual.png)
 
 If something went wrong (or if you just feel like it), you can process an operation again by providing the **name of the
 operation** as parameter in `operations:process`.
@@ -308,7 +308,7 @@ php artisan operations:process --test
 
 ### Showing all operations
 
-![One-Time Operations for Laravel - Showing all operations](https://user-images.githubusercontent.com/65356688/224432952-49009531-8946-4d19-8cee-70ca12605038.png)
+![One-Time Operations for Laravel - Showing all operations](/img/operations_show.png)
 
 So you don't have to check the database or the directory for the existing operations,
 you can show a list with `operations:show`.
@@ -341,7 +341,10 @@ composer test
 
 ## License
 
-"One-Time Operations for Laravel" is open-sourced software licensed under the [MIT license](LICENSE).
+"Laravel Operations" is open-sourced software licensed under the [MIT license](LICENSE.md).
+
+Contributions to this code base are governed by
+the [Encore Digital Group Contribution Terms](https://github.com/EncoreDigitalGroup/.github/blob/main/CONTRIBUTING-TERMS.md).
 
 Note: this is a fork
 of [timokoerber/laravel-one-time-operations](https://github.com/timokoerber/laravel-one-time-operations)
