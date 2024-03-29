@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Queue;
-
 //use PHPUnit\Framework\TestCase as BaseTestCase;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
@@ -32,7 +31,7 @@ abstract class TestCase extends BaseTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-//        DB::rollback();
+        //        DB::rollback();
     }
 
     protected function getPackageProviders($app): array

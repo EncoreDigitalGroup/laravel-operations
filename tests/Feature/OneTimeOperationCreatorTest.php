@@ -7,7 +7,6 @@ use EncoreDigitalGroup\LaravelOperations\LaravelOperationFile;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
-
 it('creates an operation file instance', function () {
     $directory = Config::get('operations.directory');
     $filepath = base_path($directory) . DIRECTORY_SEPARATOR . '2015_10_21_072800_test_operation.php';

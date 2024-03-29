@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 
-
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 afterEach(function () {
