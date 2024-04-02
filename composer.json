@@ -68,7 +68,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "EncoreDigitalGroup\\LaravelOperations\\Tests\\Feature\\LaravelOperationsServiceProvider"
+                "EncoreDigitalGroup\\LaravelOperations\\Providers\\LaravelOperationsServiceProvider"
             ]
         }
     }
