@@ -2,7 +2,6 @@
 
 namespace EncoreDigitalGroup\LaravelOperations;
 
-use EncoreDigitalGroup\LaravelOperations\Models\Operation;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use SplFileInfo;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use Throwable;
+use EncoreDigitalGroup\LaravelOperations\Models\Operation;
 
 class LaravelOperationManager
 {
@@ -22,7 +21,7 @@ class LaravelOperationManager
     {
         $operationFiles = self::getUnprocessedFiles();
 
-        return $operationFiles->map(fn (SplFileInfo $file) => LaravelOperationFile::make($file));
+        return $operationFiles->map(fn(SplFileInfo $file) => LaravelOperationFile::make($file));
     }
 
     /**
@@ -32,7 +31,7 @@ class LaravelOperationManager
     {
         $operationFiles = self::getAllFiles();
 
-        return $operationFiles->map(fn (SplFileInfo $file) => LaravelOperationFile::make($file));
+        return $operationFiles->map(fn(SplFileInfo $file) => LaravelOperationFile::make($file));
     }
 
     /**

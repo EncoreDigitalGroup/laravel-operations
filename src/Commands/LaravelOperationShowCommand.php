@@ -2,13 +2,13 @@
 
 namespace EncoreDigitalGroup\LaravelOperations\Commands;
 
-use EncoreDigitalGroup\LaravelOperations\Commands\Utils\OperationsLineElement;
-use EncoreDigitalGroup\LaravelOperations\LaravelOperationFile;
-use EncoreDigitalGroup\LaravelOperations\LaravelOperationManager;
-use EncoreDigitalGroup\LaravelOperations\Models\Operation;
 use Exception;
 use Illuminate\Support\Collection;
 use Throwable;
+use EncoreDigitalGroup\LaravelOperations\Commands\Utils\OperationsLineElement;
+use EncoreDigitalGroup\LaravelOperations\Models\Operation;
+use EncoreDigitalGroup\LaravelOperations\LaravelOperationFile;
+use EncoreDigitalGroup\LaravelOperations\LaravelOperationManager;
 
 class LaravelOperationShowCommand extends LaravelOperationsCommand
 {
@@ -55,8 +55,8 @@ class LaravelOperationShowCommand extends LaravelOperationsCommand
      */
     protected function validateFilters(): void
     {
-        $filters = array_map(fn ($filter) => strtolower($filter), $this->argument('filter'));
-        $validFilters = array_map(fn ($filter) => strtolower($filter), $this->validFilters);
+        $filters = array_map(fn($filter) => strtolower($filter), $this->argument('filter'));
+        $validFilters = array_map(fn($filter) => strtolower($filter), $this->validFilters);
 
         throw_if(array_diff($filters, $validFilters), Exception::class, 'Given filter is not valid. Allowed filters: ' . implode('|', array_map('strtolower', $this->validFilters)));
     }
@@ -69,7 +69,7 @@ class LaravelOperationShowCommand extends LaravelOperationsCommand
             return true;
         }
 
-        $givenFilters = array_map(fn ($filter) => strtolower($filter), $givenFilters);
+        $givenFilters = array_map(fn($filter) => strtolower($filter), $givenFilters);
 
         return in_array(strtolower($filterName), $givenFilters);
     }
