@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use SplFileInfo;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use Throwable;
 
 class LaravelOperationManager
 {
