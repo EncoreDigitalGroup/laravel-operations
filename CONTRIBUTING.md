@@ -1,0 +1,1 @@
+Please see the [Encore Digital Group Contribution Guide](https://github.com/EncoreDigitalGroup/.github/blob/main/CONTRIBUTING.md)for info on contributing.
