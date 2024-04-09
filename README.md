@@ -344,7 +344,7 @@ composer test
 "Laravel Operations" is open-sourced software licensed under the [MIT license](LICENSE.md).
 
 Contributions to this code base are governed by
-the [Encore Digital Group Contribution Terms](https://github.com/EncoreDigitalGroup/.github/blob/main/CONTRIBUTING-TERMS.md).
+the [Encore Digital Group Contribution Terms](https://github.com/EncoreDigitalGroup/.github/blob/main/CODE-CONTRIBUTION-TERMS.md).
 
 Note: this is a fork
 of [timokoerber/laravel-one-time-operations](https://github.com/timokoerber/laravel-one-time-operations)
