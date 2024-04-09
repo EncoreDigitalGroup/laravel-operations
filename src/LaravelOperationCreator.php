@@ -54,7 +54,7 @@ class LaravelOperationCreator
 
     public function getOperationName(): string
     {
-        if (!$this->operationName) {
+        if (! $this->operationName) {
             $this->initOperationName();
         }
 

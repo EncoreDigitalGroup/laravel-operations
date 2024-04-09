@@ -2,10 +2,10 @@
 
 namespace EncoreDigitalGroup\LaravelOperations;
 
+use EncoreDigitalGroup\LaravelOperations\Models\Operation;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use SplFileInfo;
-use EncoreDigitalGroup\LaravelOperations\Models\Operation;
 
 class LaravelOperationFile
 {
@@ -33,7 +33,7 @@ class LaravelOperationFile
 
     public function getClassObject(): LaravelOperation
     {
-        if (!$this->classObject) {
+        if (! $this->classObject) {
             $this->classObject = File::getRequire($this->file);
         }
 
