@@ -6,9 +6,9 @@ parameters:
     paths:
         - src
     reportUnmatchedIgnoredErrors: false
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
     checkDynamicProperties: false
     checkTooWideReturnTypesInProtectedAndPublicMethods: false
     ignoreErrors:
         - '#PHPDoc tag .+ #'
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics

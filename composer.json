@@ -26,13 +26,15 @@
     "homepage": "https://github.com/EncoreDigitalGroup/laravel-operations",
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^10.0|^11.0",
-        "illuminate/support": "^10.0|^11.0"
+        "illuminate/contracts": "^10|^11|^12",
+        "illuminate/support": "^10|^11|^12"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-drift": "^2.6",
+        "larastan/larastan": "^3.3",
+        "orchestra/testbench": "^10",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-drift": "^3.0",
+        "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^2.0"
     },
     "replace": {
@@ -62,7 +64,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
         }
     },
     "extra": {
