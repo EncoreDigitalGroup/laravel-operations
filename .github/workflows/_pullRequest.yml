@@ -8,28 +8,33 @@ permissions:
     pull-requests: write
 
 jobs:
-    Duster:
-        name: Duster
-        uses: EncoreDigitalGroup/.github/.github/workflows/dusterFixBlame.yml@v1
-        permissions:
-            contents: write
-            pull-requests: write
+    CodeStyle:
+        name: CodeStyle
+        runs-on: ubuntu-latest
+        steps:
+          - name: CodeStyle
+            uses: EncoreDigitalGroup/ci-workflows/actions/php/codeStyle@v2
+            with:
+              branch: "${{ github.head_ref }}"
+              repository: "${{ github.repository }}"
 
     StaticAnalysis:
-        needs: Duster
+        needs: CodeStyle
         name: StaticAnalysis
-        uses: EncoreDigitalGroup/.github/.github/workflows/larastan.yml@latest
+        uses: EncoreDigitalGroup/ci-workflows/.github/workflows/php_larastan.yml@v2
         with:
-            path: 'src/'
-
-    UnitTests:
-        needs: StaticAnalysis
-        name: UnitTests
-        uses: EncoreDigitalGroup/.github/.github/workflows/pest.yml@latest
+          path: 'src/'
+          branch: ${{ github.head_ref }}
+          
+    Test:
+        needs: CodeStyle
+        name: Test
+        uses: EncoreDigitalGroup/ci-workflows/.github/workflows/php_pest.yml@v2
         with:
-            phpVersion: '8.3'
+          branch: ${{ github.head_ref }}
+          runParallel: true
 
     AutoMerge:
-        needs: UnitTests
-        name: AutoMerge
-        uses: EncoreDigitalGroup/.github/.github/workflows/dependabotAutoMerge.yml@v1
+        needs: [ StaticAnalysis, Test ]
+        name: Auto-Merge
+        uses: EncoreDigitalGroup/ci-workflows/.github/workflows/github_dependabotAutoMerge.yml@v2
