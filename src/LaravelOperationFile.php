@@ -33,8 +33,10 @@ class LaravelOperationFile
 
     public function getClassObject(): LaravelOperation
     {
-        if (! $this->classObject) {
-            $this->classObject = File::getRequire($this->file);
+        if (is_null($this->classObject)) {
+            /** @var LaravelOperation $classObject */
+            $classObject = File::getRequire($this->file);
+            $this->classObject = $classObject;
         }
 
         return $this->classObject;
